@@ -1,4 +1,3 @@
-package com.pri.factorytest;
 
 import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
