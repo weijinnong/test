@@ -1,4 +1,3 @@
-linux http push test
 package com.prize.weather.framework.model;
 
 public class CityModel {
