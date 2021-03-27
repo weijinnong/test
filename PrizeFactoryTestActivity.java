@@ -132,46 +132,6 @@ public class PrizeFactoryTestActivity extends PrizeBaseActivity {
         //Log.i(TAG, "----system.serial" + Build.getSerial());
         mContext = this;
         mTestItems = mContext.getResources().getStringArray(R.array.single_test_items);
-        String[] totalItems = mContext.getResources().getStringArray(R.array.test_item_values);
-        mItemsValue = Arrays.stream(totalItems).map(x -> {return x.split(",")[0];}).toArray(String[]::new);
-        String[] totalItemsNvIndexs = Arrays.stream(totalItems).map(x -> {return x.split(",")[1];}).toArray(String[]::new);
-        mApp = (FactoryTestApplication) getApplication();
-
-        mApp.setPrizeFactoryTotalNvIndexs(totalItemsNvIndexs);
-        mApp.setPrizeFactoryTotalItems(mItemsValue);
-
-        mTestItems = initTestItems();
-        mApp.setTestItems(mTestItems);
-        mApp.setItemsValue(mItemsValue);
-        mItemsValueList = Arrays.asList(mItemsValue);
-        mTestValue = mItemsValue;
-        initViews();
-        Utils.paddingLayout(findViewById(R.id.prize_title), 0, ACTIVITY_TOP_PADDING, 0, 0);
-        enableGPS(true);
-        new Thread(() -> {
-            try {
-                Thread.sleep(1000);
-                startService(new Intent(PrizeFactoryTestActivity.this, WifiScanService.class));
-                //if (SystemProperties.get("ro.mtk_bt_support").equals("1")) {
-                startService(new Intent(PrizeFactoryTestActivity.this, BluetoothScanService.class));
-                //}
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }).start();
-
-        if ("koobee".equals(PRIZE_CUSTOMER)) {
-            agingtestButton.setVisibility(View.GONE);
-        } else {
-            agingtestButton.setVisibility(View.GONE);
-        }
-        if ((null == getIntent().getExtras()) || !getIntent().getExtras().getBoolean("isAutoTest")) {
-            String componentName = getIntent().getComponent().getClassName();
-            Log.i(TAG, "---componentName:" + componentName);
-            if (!preStartAutoCit()) {
-                return;
-            }
-            switch (componentName) {
                 case "com.pri.factorytest.ManualTestLauncher":
                     startManualTest();
                     break;
