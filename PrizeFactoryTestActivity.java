@@ -114,13 +114,6 @@ public class PrizeFactoryTestActivity extends PrizeBaseActivity {
     private boolean isMobileTest = false;
     private boolean isManualTest = false;
     private Context mContext;
-    private long startMili;
-    private long endMili;
-    private long mTestTime;
-    private FactoryTestApplication mApp;
-    private volatile int mExceptItem;
-    private String[] mTestItems = new String[70];
-    private String[] mItemsValue = new String[70];
     private volatile String[] mTestValue = new String[70];
     private List<String> mItemsValueList = null;
     private String mLastOperation = "";
